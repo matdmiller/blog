@@ -1,4 +1,7 @@
 Quarto publish command:
 quarto publish gh-pages --no-browser
 
+Local Preview:
+quarto preview
+
 

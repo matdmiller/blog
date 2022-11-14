@@ -6,14 +6,14 @@ about:
   links:
     - icon: twitter
       text: Twitter
-      href: https://twitter.com
+      href: https://twitter.com/matdmiller
     - icon: linkedin
       text: LinkedIn
       href: https://linkedin.com
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/matdmiller
 
 ---
 
-About this blog
+Hi, my name is Mat Miller. I work on technology in the engineering and construction sector in the North America. My degree is in engineering and I am a self-taught coder. The purpose of this blog is to document my journey learning AI through the [fast.ai](https://fast.ai) course and to discuss other technology projects I find interesting.
