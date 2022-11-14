@@ -1,0 +1,22 @@
+project:
+  type: website
+  preview:
+    browser: false
+    host: 0.0.0.0
+    port: 4200
+
+website:
+  title: "Mat's Blog"
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/matdmiller
+      - icon: twitter
+        href: https://twitter.com/matdmiller
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+
+
