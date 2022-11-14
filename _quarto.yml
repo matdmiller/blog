@@ -21,3 +21,6 @@ format:
 
 execute:
   freeze: auto
+
+editor:
+  render-on-save: true
