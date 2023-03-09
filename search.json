@@ -1,30 +1,30 @@
 [
   {
-    "objectID": "posts/jupyter-notebook-demo-post/notebook.html",
-    "href": "posts/jupyter-notebook-demo-post/notebook.html",
-    "title": "Sharing Jupyter Notebooks",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "1 Prep\n\nCollapseSetup & ImportsGet DataUser Defined Functions\n\n\n\n\n\n\n\nCode\n# Load the package\nimport pandas as pd\nimport numpy as np\n\n\n\n\n\n1.0.1 Dataset 1\n\n\nCode\n1+2\n\n\n3\n\n\n\n\n1.0.2 Dataset 2\nOther stuff\n\n\n\n\n\n\n\n\n\n2 Another Section\n\nCommon FunctionalityCollapse\n\n\nabc some text with various markdown style:\n\nA list\nin markdown\n\nwith a particular function highlighted in text for clarity\n\n\n\n\n\n\nTip With Caption\n\n\n\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\nI also sometimes use other types of blocks for example for highlighting quotes I may do.\n\nQuote: Some very interesting Quote can be put here\n\n\n\n\n\n\n\n\n\n3 Yet Another Section"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "#\nHello world!"
+    "text": "Hi, my name is Mat Miller. I work on technology in the engineering and construction sector in the North America. My degree is in engineering and I am a self-taught coder. The purpose of this blog is to document my journey learning AI through the fast.ai course and to discuss other technology projects I find interesting."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "blog",
     "section": "",
-    "text": "quarto\n\n\ncode\n\n\njupyter\n\n\ndemo\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nMat Miller\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\nwelcome\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2022\n\n\nMat Miller\n\n\n\n\n\n\nNo matching items"
+    "text": "Sharing Jupyter Notebooks\n\n\n\n\n\n\n\nquarto\n\n\ncode\n\n\njupyter\n\n\ndemo\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nMat Miller\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\nwelcome\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2022\n\n\nMat Miller\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "posts/jupyter-notebook-demo-post/notebook.html",
+    "href": "posts/jupyter-notebook-demo-post/notebook.html",
+    "title": "Sharing Jupyter Notebooks",
     "section": "",
-    "text": "Hi, my name is Mat Miller. I work on technology in the engineering and construction sector in the North America. My degree is in engineering and I am a self-taught coder. The purpose of this blog is to document my journey learning AI through the fast.ai course and to discuss other technology projects I find interesting."
+    "text": "This is a demonstration of some of the cool functionality available when sharing Jupyter Notebooks using Quarto. A big thanks to Isaac Flath for creating this notebook!\n\n1 Prep\n\nCollapseSetup & ImportsGet DataUser Defined Functions\n\n\n\n\n\n\n\nCode\n# Load the package\nimport pandas as pd\nimport numpy as np\n\n\n\n\n\n1.0.1 Dataset 1\n\n\nCode\n1+2\n\n\n3\n\n\n\n\n1.0.2 Dataset 2\nOther stuff\n\n\n\n\n\n\n\n\n\n2 Another Section\n\nCommon FunctionalityCollapse\n\n\nabc some text with various markdown style:\n\nA list\nin markdown\n\nwith a particular function highlighted in text for clarity\n\n\n\n\n\n\nTip With Caption\n\n\n\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\nI also sometimes use other types of blocks for example for highlighting quotes I may do.\n\nQuote: Some very interesting Quote can be put here\n\n\n\n\n\n\n\n\n\n3 Yet Another Section"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n#\nHello world!"
   }
 ]

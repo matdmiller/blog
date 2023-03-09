@@ -1,1 +1,1 @@
-Sitemap: https://github.com/matdmiller/blog/sitemap.xml
+Sitemap: https://matdmiller.com/sitemap.xml
