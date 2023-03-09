@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "Hi, my name is Mat Miller. I work on technology in the engineering and construction sector in the North America. My degree is in engineering and I am a self-taught coder. The purpose of this blog is to document my journey learning AI through the fast.ai course and to discuss other technology projects I find interesting."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "blog",
-    "section": "",
-    "text": "Sharing Jupyter Notebooks\n\n\n\n\n\n\n\nquarto\n\n\ncode\n\n\njupyter\n\n\ndemo\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nMat Miller\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\nwelcome\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2022\n\n\nMat Miller\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "posts/jupyter-notebook-demo-post/notebook.html",
     "href": "posts/jupyter-notebook-demo-post/notebook.html",
     "title": "Sharing Jupyter Notebooks",
@@ -26,5 +12,19 @@
     "title": "Welcome To My Blog",
     "section": "",
     "text": "This is the first post in a Quarto blog. Welcome!\n#\nHello world!"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Hi, my name is Mat Miller. I work on technology in the engineering and construction sector in the North America. My degree is in engineering and I am a self-taught coder. The purpose of this blog is to document my journey learning AI through the fast.ai course and to discuss other technology projects I find interesting."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "blog",
+    "section": "",
+    "text": "Sharing Jupyter Notebooks\n\n\n\n\n\n\n\nquarto\n\n\ncode\n\n\njupyter\n\n\ndemo\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nMat Miller\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\nwelcome\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2022\n\n\nMat Miller\n\n\n\n\n\n\nNo matching items"
   }
 ]
