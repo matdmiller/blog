@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://blog.matdmiller.com/posts/jupyter-notebook-demo-post/notebook.html</loc>
-    <lastmod>2023-03-09T03:50:11.466Z</lastmod>
+    <loc>https://matdmiller.github.io/blog/about.html</loc>
+    <lastmod>2023-06-13T00:03:30.513Z</lastmod>
   </url>
   <url>
-    <loc>https://blog.matdmiller.com/posts/welcome/index.html</loc>
-    <lastmod>2023-03-09T03:50:13.174Z</lastmod>
+    <loc>https://matdmiller.github.io/blog/index.html</loc>
+    <lastmod>2023-06-13T00:03:31.073Z</lastmod>
   </url>
   <url>
-    <loc>https://blog.matdmiller.com/about.html</loc>
-    <lastmod>2023-03-09T03:50:13.482Z</lastmod>
+    <loc>https://matdmiller.github.io/blog/posts/welcome/index.html</loc>
+    <lastmod>2023-06-13T00:03:31.533Z</lastmod>
   </url>
   <url>
-    <loc>https://blog.matdmiller.com/index.html</loc>
-    <lastmod>2023-03-09T03:50:13.826Z</lastmod>
+    <loc>https://matdmiller.github.io/blog/posts/jupyter-notebook-demo-post/notebook.html</loc>
+    <lastmod>2023-06-13T00:03:33.761Z</lastmod>
+  </url>
+  <url>
+    <loc>https://matdmiller.github.io/blog/posts/2022-12-13_context_managers_1/notebook.html</loc>
+    <lastmod>2023-06-13T00:03:35.737Z</lastmod>
   </url>
 </urlset>
