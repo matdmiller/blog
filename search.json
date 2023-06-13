@@ -1,24 +1,17 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "Hi, my name is Mat Miller. I work on technology in the engineering and construction sector in the North America. My degree is in engineering and I am a self-taught coder. The purpose of this blog is to document my journey learning AI through the fast.ai course and to discuss other technology projects I find interesting."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "blog",
-    "section": "",
-    "text": "Context Managers\n\n\n\n\n\n\n\npython\n\n\ncode\n\n\ntoday I learned\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2022\n\n\nMat Miller\n\n\n\n\n\n\n  \n\n\n\n\nSharing Jupyter Notebooks\n\n\n\n\n\n\n\nquarto\n\n\ncode\n\n\njupyter\n\n\ndemo\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nMat Miller\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\nwelcome\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2022\n\n\nMat Miller\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
     "title": "Welcome To My Blog",
     "section": "",
     "text": "This is the first post in a Quarto blog. Welcome!\n#\nHello world!"
+  },
+  {
+    "objectID": "posts/2022-12-13_context_managers_1/notebook.html",
+    "href": "posts/2022-12-13_context_managers_1/notebook.html",
+    "title": "Context Managers",
+    "section": "",
+    "text": "This is a quick ‘today I learned’ (TIL) note on Python Context managers. Python context managers are used to wrap arbitrary code with entry (setup) and exit (cleanup) functions. One common places you’ll see them used is when reading data from a file.\n\n# Open file and read contents.\nwith open('test.txt','r') as f:\n    output = f.readlines()\nprint(output)\n\n['This file is called test.txt.\\n', \"This is what's on the second line.\"]\n\n\nIf we try and read from the file f, defined above, we will get an I/O exception because the file as already been closed.\n\ntry:\n    f.readlines()\nexcept Exception as e:\n    print(e)\n\nI/O operation on closed file.\n\n\nHere is the equivalent long hand way to read the data from the file:\n\nf = open('test.txt')\noutput = f.readlines()\nf.close()\nprint(output)\n\n['This file is called test.txt.\\n', \"This is what's on the second line.\"]\n\n\nAs you can see the syntax is more verbose, it would be easier to forget to close the file, and it’s much less clear to see at a glance when we’re operating on the file. This example is relatively trivial as we’re just reading all the lines of the text file into a list but you can probably imagine this could be a lot more complex if you were doing something more complicated like training a neural net.\nNow let’s write our own class that uses a conext manager to cement how they can be implemented.\n\nclass MyContextManagerClass:\n    def __enter__(self):\n        print(\"Entering the context...\")\n        return \"My enter message.\"\n    def __exit__(self, exception_type, exception_value, exception_traceback):\n        print(\"Leaving the context...\")\n        print(exception_type, exception_value, exception_traceback, sep=\"\\n\")\n\n\nwith MyContextManagerClass() as h:\n    print('hi', h)\n\nEntering the context...\nhi My enter message.\nLeaving the context...\nNone\nNone\nNone\n\n\nAs you can see the enter message was printed, the __enter__ return value was passed and then the exit message was printed. Now let’s see what happens if there is an error while within our context.\n\nwith MyContextManagerClass() as h:\n    print(h)\n    print(1/0)\n\nEntering the context...\nMy enter message.\nLeaving the context...\n&lt;class 'ZeroDivisionError'&gt;\ndivision by zero\n&lt;traceback object&gt;\n\n\nZeroDivisionError: division by zero\n\n\nAs you can see an error was thrown but the __exit__ function was run anyways.\nThere are many other ways you can implement and use context managers which you can read about here: Python Conext Managers. Hopefully I’ve given you a taste of what’s possible and given you a basic understanding of they they’re useful.\nHere are a few more examples for your reference:\nExample 1: Using the contextmanager decorator\n\nfrom contextlib import contextmanager\n\n@contextmanager\ndef closing(thing):\n    try:\n        print('Starting')\n        yield thing\n    finally:\n        print('Finishing:',thing)\n\n\nwith closing('a'):\n    print('hi')\n\nStarting\nhi\nFinishing: a\n\n\nExample 2: Using ContextDecorator\n\nfrom contextlib import ContextDecorator\n\nclass mycontext(ContextDecorator):\n    def __enter__(self):\n        print('Starting')\n        return self\n\n    def __exit__(self, *exc):\n        print('Finishing')\n        return False\n\n\n@mycontext()\ndef my_function():\n    print('The bit in the middle')\n\n\nmy_function()\n\nStarting\nThe bit in the middle\nFinishing"
   },
   {
     "objectID": "posts/jupyter-notebook-demo-post/notebook.html",
@@ -28,10 +21,17 @@
     "text": "This is a demonstration of some of the cool functionality available when sharing Jupyter Notebooks using Quarto. A big thanks to Isaac Flath for creating this notebook!\n\n1 Prep\n\nCollapseSetup & ImportsGet DataUser Defined Functions\n\n\n\n\n\n\n\nCode\n# Load the package\nimport pandas as pd\nimport numpy as np\n\n\n\n\n\n1.0.1 Dataset 1\n\n\nCode\n1+2\n\n\n3\n\n\n\n\n1.0.2 Dataset 2\nOther stuff\n\n\n\n\n\n\n\n\n\n2 Another Section\n\nCommon FunctionalityCollapse\n\n\nabc some text with various markdown style:\n\nA list\nin markdown\n\nwith a particular function highlighted in text for clarity\n\n\n\n\n\n\nTip With Caption\n\n\n\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\n\n\n\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\nI also sometimes use other types of blocks for example for highlighting quotes I may do.\n\nQuote: Some very interesting Quote can be put here\n\n\n\n\n\n\n\n\n\n3 Yet Another Section"
   },
   {
-    "objectID": "posts/2022-12-13_context_managers_1/notebook.html",
-    "href": "posts/2022-12-13_context_managers_1/notebook.html",
-    "title": "Context Managers",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "blog",
     "section": "",
-    "text": "This is a quick ‘today I learned’ (TIL) note on Python Context managers. Python context managers are used to wrap arbitrary code with entry (setup) and exit (cleanup) functions. One common places you’ll see them used is when reading data from a file.\n\n# Open file and read contents.\nwith open('test.txt','r') as f:\n    output = f.readlines()\nprint(output)\n\n['This file is called test.txt.\\n', \"This is what's on the second line.\"]\n\n\nIf we try and read from the file f, defined above, we will get an I/O exception because the file as already been closed.\n\ntry:\n    f.readlines()\nexcept Exception as e:\n    print(e)\n\nI/O operation on closed file.\n\n\nHere is the equivalent long hand way to read the data from the file:\n\nf = open('test.txt')\noutput = f.readlines()\nf.close()\nprint(output)\n\n['This file is called test.txt.\\n', \"This is what's on the second line.\"]\n\n\nAs you can see the syntax is more verbose, it would be easier to forget to close the file, and it’s much less clear to see at a glance when we’re operating on the file. This example is relatively trivial as we’re just reading all the lines of the text file into a list but you can probably imagine this could be a lot more complex if you were doing something more complicated like training a neural net.\nNow let’s write our own class that uses a conext manager to cement how they can be implemented.\n\nclass MyContextManagerClass:\n    def __enter__(self):\n        print(\"Entering the context...\")\n        return \"My enter message.\"\n    def __exit__(self, exception_type, exception_value, exception_traceback):\n        print(\"Leaving the context...\")\n        print(exception_type, exception_value, exception_traceback, sep=\"\\n\")\n\n\nwith MyContextManagerClass() as h:\n    print('hi', h)\n\nEntering the context...\nhi My enter message.\nLeaving the context...\nNone\nNone\nNone\n\n\nAs you can see the enter message was printed, the __enter__ return value was passed and then the exit message was printed. Now let’s see what happens if there is an error while within our context.\n\nwith MyContextManagerClass() as h:\n    print(h)\n    print(1/0)\n\nEntering the context...\nMy enter message.\nLeaving the context...\n<class 'ZeroDivisionError'>\ndivision by zero\n<traceback object>\n\n\nZeroDivisionError: division by zero\n\n\nAs you can see an error was thrown but the __exit__ function was run anyways.\nThere are many other ways you can implement and use context managers which you can read about here: Python Conext Managers. Hopefully I’ve given you a taste of what’s possible and given you a basic understanding of they they’re useful.\nHere are a few more examples for your reference:\nExample 1: Using the contextmanager decorator\n\nfrom contextlib import contextmanager\n\n@contextmanager\ndef closing(thing):\n    try:\n        print('Starting')\n        yield thing\n    finally:\n        print('Finishing:',thing)\n\n\nwith closing('a'):\n    print('hi')\n\nStarting\nhi\nFinishing: a\n\n\nExample 2: Using ContextDecorator\n\nfrom contextlib import ContextDecorator\n\nclass mycontext(ContextDecorator):\n    def __enter__(self):\n        print('Starting')\n        return self\n\n    def __exit__(self, *exc):\n        print('Finishing')\n        return False\n\n\n@mycontext()\ndef my_function():\n    print('The bit in the middle')\n\n\nmy_function()\n\nStarting\nThe bit in the middle\nFinishing"
+    "text": "Context Managers\n\n\n\n\n\n\n\npython\n\n\ncode\n\n\ntoday I learned\n\n\n\n\n\n\n\n\n\n\n\nDec 13, 2022\n\n\nMat Miller\n\n\n\n\n\n\n  \n\n\n\n\nSharing Jupyter Notebooks\n\n\n\n\n\n\n\nquarto\n\n\ncode\n\n\njupyter\n\n\ndemo\n\n\n\n\n\n\n\n\n\n\n\nNov 14, 2022\n\n\nMat Miller\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\nwelcome\n\n\n\n\n\n\n\n\n\n\n\nNov 11, 2022\n\n\nMat Miller\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Hi, my name is Mat Miller. I work on technology in the engineering and construction sector in the North America. My degree is in engineering and I am a self-taught coder. The purpose of this blog is to document my journey learning AI through the fast.ai course and to discuss other technology projects I find interesting."
   }
 ]
