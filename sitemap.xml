@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://blog.matdmiller.com/about.html</loc>
-    <lastmod>2024-01-06T22:30:52.946Z</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.matdmiller.com/index.html</loc>
-    <lastmod>2024-01-06T22:30:53.530Z</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.matdmiller.com/posts/welcome/index.html</loc>
-    <lastmod>2024-01-06T22:30:54.010Z</lastmod>
+    <loc>https://blog.matdmiller.com/posts/2023-06-10_transfomers/notebook.html</loc>
+    <lastmod>2024-01-06T22:38:48.054Z</lastmod>
   </url>
   <url>
     <loc>https://blog.matdmiller.com/posts/jupyter-notebook-demo-post/notebook.html</loc>
-    <lastmod>2024-01-06T22:30:56.314Z</lastmod>
+    <lastmod>2024-01-06T22:38:43.022Z</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.matdmiller.com/index.html</loc>
+    <lastmod>2024-01-06T22:38:41.298Z</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.matdmiller.com/about.html</loc>
+    <lastmod>2024-01-06T22:38:40.482Z</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.matdmiller.com/posts/welcome/index.html</loc>
+    <lastmod>2024-01-06T22:38:41.546Z</lastmod>
   </url>
   <url>
     <loc>https://blog.matdmiller.com/posts/2022-12-13_context_managers_1/notebook.html</loc>
-    <lastmod>2024-01-06T22:30:58.358Z</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.matdmiller.com/posts/2023-06-10_transfomers/notebook.html</loc>
-    <lastmod>2024-01-06T22:31:02.382Z</lastmod>
+    <lastmod>2024-01-06T22:38:44.474Z</lastmod>
   </url>
 </urlset>
