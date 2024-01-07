@@ -17,6 +17,8 @@ website:
         href: https://github.com/matdmiller
       - icon: twitter
         href: https://twitter.com/matdmiller
+      - icon: rss
+        href: index.xml
 format:
   html:
     theme: cosmo
