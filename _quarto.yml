@@ -7,6 +7,10 @@ project:
 
 website:
   title: "Mat's Blog"
+  site-url: https://blog.matdmiller.com
+  open-graph: true
+  twitter-card:
+    creator: "@matdmiller"
   navbar:
     right:
       - about.qmd
