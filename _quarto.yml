@@ -31,7 +31,7 @@ format:
     theme:
       light: lux
       dark: lux
-#    css: styles.css
+    css: styles.css
 
 execute:
   freeze: auto
