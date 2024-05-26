@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -47,7 +47,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,6 +62,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -90,14 +97,50 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JPDLB55959"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-JPDLB55959', { 'anonymize_ip': true});
+</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Mat's Blog" href="index.xml"><meta property="og:title" content="Mat’s Blog - blog">
+<link rel="alternate" type="application/rss+xml" title="Mat's Blog" href="index.xml" data-external="1"><meta property="og:title" content="Mat’s Blog - blog">
 <meta property="og:image" content="https://blog.matdmiller.com/posts/welcome/thumbnail.jpg">
-<meta property="og:site-name" content="Mat's Blog">
+<meta property="og:site_name" content="Mat's Blog">
 <meta name="twitter:title" content="Mat’s Blog - blog">
 <meta name="twitter:image" content="https://blog.matdmiller.com/posts/welcome/thumbnail.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -106,10 +149,10 @@ ul.task-list li input[type="checkbox"] {
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Mat’s Blog</span>
     </a>
@@ -121,28 +164,28 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/matdmiller" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/matdmiller"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/matdmiller" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/matdmiller"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="./index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -155,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
     
   
-  <div class="quarto-title-meta">
+  <div class="quarto-title-meta column-page-left">
 
       
     
@@ -179,21 +222,22 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="python,transformers" data-listing-date-sort="1704499200000" data-listing-file-modified-sort="1704648251601" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="32">
+<div class="quarto-post image-right" data-index="0" data-categories="python,transformers" data-listing-date-sort="1704499200000" data-listing-file-modified-sort="1716688726321" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="32" data-listing-word-count-sort="6292">
 <div class="thumbnail">
-<p><a href="./posts/2023-06-10_transformers/notebook.html"> <img src="./posts/2023-06-10_transformers/transformer_coding_1.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-06-10_transformers/notebook.html" class="no-external"></a></p><a href="./posts/2023-06-10_transformers/notebook.html" class="no-external">
+<p><img src="./posts/2023-06-10_transformers/transformer_coding_1.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-06-10_transformers/notebook.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-06-10_transformers/notebook.html">
 <h3 class="no-anchor listing-title">
-Transformers From Scratch
+<a href="./posts/2023-06-10_transformers/notebook.html" class="no-external">Transformers From Scratch</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-06-10_transformers/notebook.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
 python
@@ -202,14 +246,12 @@ python
 transformers
 </div>
 </div>
-<a href="./posts/2023-06-10_transformers/notebook.html">
 <div class="listing-description">
-<br><br> In this blog we’re going to walk through creating and training a…
+<a href="./posts/2023-06-10_transformers/notebook.html" class="no-external"><svg id="svg_1d23e53ab58ce3dbf2df" class="img-fluid" alt="Open in Google Colab" width="117" height="20" viewbox="0 0 117 20"><lineargradient id="svg_1d23e53ab58ce3dbf2df_b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"></stop><stop offset="1" stop-opacity=".1"></stop></lineargradient><clippath id="svg_1d23e53ab58ce3dbf2df_a"><rect width="117" height="20" rx="3" fill="#fff"></rect></clippath><g clip-path="url(#a)"><path fill="#555" d="M0 0h30v20H0z"></path><path fill="#007ec6" d="M30 0h87v20H30z"></path><path fill="url(#b)" d="M0 0h117v20H0z"></path></g><g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110"><svg x="4px" y="0px" width="22px" height="20px" viewbox="-2 0 28 24" style="background-color: #fff;border-radius: 1px;"><path style="fill:#e8710a;" d="M1.977,16.77c-2.667-2.277-2.605-7.079,0-9.357C2.919,8.057,3.522,9.075,4.49,9.691c-1.152,1.6-1.146,3.201-0.004,4.803C3.522,15.111,2.918,16.126,1.977,16.77z"></path><path style="fill:#f9ab00;" d="M12.257,17.114c-1.767-1.633-2.485-3.658-2.118-6.02c0.451-2.91,2.139-4.893,4.946-5.678c2.565-0.718,4.964-0.217,6.878,1.819c-0.884,0.743-1.707,1.547-2.434,2.446C18.488,8.827,17.319,8.435,16,8.856c-2.404,0.767-3.046,3.241-1.494,5.644c-0.241,0.275-0.493,0.541-0.721,0.826C13.295,15.939,12.511,16.3,12.257,17.114z"></path><path style="fill:#e8710a;" d="M19.529,9.682c0.727-0.899,1.55-1.703,2.434-2.446c2.703,2.783,2.701,7.031-0.005,9.764c-2.648,2.674-6.936,2.725-9.701,0.115c0.254-0.814,1.038-1.175,1.528-1.788c0.228-0.285,0.48-0.552,0.721-0.826c1.053,0.916,2.254,1.268,3.6,0.83C20.502,14.551,21.151,11.927,19.529,9.682z"></path><path style="fill:#f9ab00;" d="M4.49,9.691C3.522,9.075,2.919,8.057,1.977,7.413c2.209-2.398,5.721-2.942,8.476-1.355c0.555,0.32,0.719,0.606,0.285,1.128c-0.157,0.188-0.258,0.422-0.391,0.631c-0.299,0.47-0.509,1.067-0.929,1.371C8.933,9.539,8.523,8.847,8.021,8.746C6.673,8.475,5.509,8.787,4.49,9.691z"></path><path style="fill:#f9ab00;" d="M1.977,16.77c0.941-0.644,1.545-1.659,2.509-2.277c1.373,1.152,2.85,1.433,4.45,0.499c0.332-0.194,0.503-0.088,0.673,0.19c0.386,0.635,0.753,1.285,1.181,1.89c0.34,0.48,0.222,0.715-0.253,1.006C7.84,19.73,4.205,19.188,1.977,16.77z"></path></svg></g></svg><br><br> In this blog we’re going to walk through creating and training a transformer from scratch. We’ll go through each foundational element step by step and explain what is…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-06-10_transformers/notebook.html">
+<a href="./posts/2023-06-10_transformers/notebook.html" class="no-external">
 <div class="listing-date">
 Jan 6, 2024
 </div>
@@ -219,19 +261,19 @@ Mat Miller
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="python,code,today I learned" data-listing-date-sort="1670889600000" data-listing-file-modified-sort="1704648251589" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="1" data-categories="python,code,today I learned" data-listing-date-sort="1670889600000" data-listing-file-modified-sort="1716688726305" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="281">
 <div class="thumbnail">
-<p><a href="./posts/2022-12-13_context_managers_1/notebook.html"> <img src="./posts/2022-12-13_context_managers_1/python_learning_to_code_1_512.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2022-12-13_context_managers_1/notebook.html" class="no-external"></a></p><a href="./posts/2022-12-13_context_managers_1/notebook.html" class="no-external">
+<p><img src="./posts/2022-12-13_context_managers_1/python_learning_to_code_1_512.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2022-12-13_context_managers_1/notebook.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2022-12-13_context_managers_1/notebook.html">
 <h3 class="no-anchor listing-title">
-Context Managers
+<a href="./posts/2022-12-13_context_managers_1/notebook.html" class="no-external">Context Managers</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2022-12-13_context_managers_1/notebook.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
 python
@@ -243,14 +285,12 @@ code
 today I learned
 </div>
 </div>
-<a href="./posts/2022-12-13_context_managers_1/notebook.html">
 <div class="listing-description">
-<br> This is a quick ‘today I learned’ (TIL) note on Python Context managers.…
+<a href="./posts/2022-12-13_context_managers_1/notebook.html" class="no-external"><svg id="svg_1d23e53ab58ce3dbf2df" class="img-fluid" alt="Open in Google Colab" width="117" height="20" viewbox="0 0 117 20"><lineargradient id="svg_1d23e53ab58ce3dbf2df_b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"></stop><stop offset="1" stop-opacity=".1"></stop></lineargradient><clippath id="svg_1d23e53ab58ce3dbf2df_a"><rect width="117" height="20" rx="3" fill="#fff"></rect></clippath><g clip-path="url(#a)"><path fill="#555" d="M0 0h30v20H0z"></path><path fill="#007ec6" d="M30 0h87v20H30z"></path><path fill="url(#b)" d="M0 0h117v20H0z"></path></g><g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110"><svg x="4px" y="0px" width="22px" height="20px" viewbox="-2 0 28 24" style="background-color: #fff;border-radius: 1px;"><path style="fill:#e8710a;" d="M1.977,16.77c-2.667-2.277-2.605-7.079,0-9.357C2.919,8.057,3.522,9.075,4.49,9.691c-1.152,1.6-1.146,3.201-0.004,4.803C3.522,15.111,2.918,16.126,1.977,16.77z"></path><path style="fill:#f9ab00;" d="M12.257,17.114c-1.767-1.633-2.485-3.658-2.118-6.02c0.451-2.91,2.139-4.893,4.946-5.678c2.565-0.718,4.964-0.217,6.878,1.819c-0.884,0.743-1.707,1.547-2.434,2.446C18.488,8.827,17.319,8.435,16,8.856c-2.404,0.767-3.046,3.241-1.494,5.644c-0.241,0.275-0.493,0.541-0.721,0.826C13.295,15.939,12.511,16.3,12.257,17.114z"></path><path style="fill:#e8710a;" d="M19.529,9.682c0.727-0.899,1.55-1.703,2.434-2.446c2.703,2.783,2.701,7.031-0.005,9.764c-2.648,2.674-6.936,2.725-9.701,0.115c0.254-0.814,1.038-1.175,1.528-1.788c0.228-0.285,0.48-0.552,0.721-0.826c1.053,0.916,2.254,1.268,3.6,0.83C20.502,14.551,21.151,11.927,19.529,9.682z"></path><path style="fill:#f9ab00;" d="M4.49,9.691C3.522,9.075,2.919,8.057,1.977,7.413c2.209-2.398,5.721-2.942,8.476-1.355c0.555,0.32,0.719,0.606,0.285,1.128c-0.157,0.188-0.258,0.422-0.391,0.631c-0.299,0.47-0.509,1.067-0.929,1.371C8.933,9.539,8.523,8.847,8.021,8.746C6.673,8.475,5.509,8.787,4.49,9.691z"></path><path style="fill:#f9ab00;" d="M1.977,16.77c0.941-0.644,1.545-1.659,2.509-2.277c1.373,1.152,2.85,1.433,4.45,0.499c0.332-0.194,0.503-0.088,0.673,0.19c0.386,0.635,0.753,1.285,1.181,1.89c0.34,0.48,0.222,0.715-0.253,1.006C7.84,19.73,4.205,19.188,1.977,16.77z"></path></svg></g></svg><br> This is a quick ‘today I learned’ (TIL) note on Python Context managers. Python context managers are used to wrap arbitrary code with entry (setup) and exit (cleanup)…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2022-12-13_context_managers_1/notebook.html">
+<a href="./posts/2022-12-13_context_managers_1/notebook.html" class="no-external">
 <div class="listing-date">
 Dec 13, 2022
 </div>
@@ -260,19 +300,19 @@ Mat Miller
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="quarto,code,jupyter,demo" data-listing-date-sort="1668384000000" data-listing-file-modified-sort="1704648251605" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="2" data-categories="quarto,code,jupyter,demo" data-listing-date-sort="1668384000000" data-listing-file-modified-sort="1716688726325" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="126">
 <div class="thumbnail">
-<p><a href="./posts/jupyter-notebook-demo-post/notebook.html"> <img src="./posts/jupyter-notebook-demo-post/jupyter.svg" class="thumbnail-image"> </a></p>
+<p><a href="./posts/jupyter-notebook-demo-post/notebook.html" class="no-external"></a></p><a href="./posts/jupyter-notebook-demo-post/notebook.html" class="no-external">
+<p><img src="./posts/jupyter-notebook-demo-post/jupyter.svg" class="thumbnail-image"></p>
+</a><p><a href="./posts/jupyter-notebook-demo-post/notebook.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/jupyter-notebook-demo-post/notebook.html">
 <h3 class="no-anchor listing-title">
-Sharing Jupyter Notebooks
+<a href="./posts/jupyter-notebook-demo-post/notebook.html" class="no-external">Sharing Jupyter Notebooks</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/jupyter-notebook-demo-post/notebook.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('quarto'); return false;">
 quarto
@@ -287,14 +327,12 @@ jupyter
 demo
 </div>
 </div>
-<a href="./posts/jupyter-notebook-demo-post/notebook.html">
 <div class="listing-description">
-This is a demonstration of some of the cool functionality available when sharing Jupyter Notebooks using Quarto. A big thanks to Isaac Flath for creating this notebook!
+<a href="./posts/jupyter-notebook-demo-post/notebook.html" class="no-external">This is a demonstration of some of the cool functionality available when sharing Jupyter Notebooks using Quarto. A big thanks to Isaac Flath for creating this notebook!</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/jupyter-notebook-demo-post/notebook.html">
+<a href="./posts/jupyter-notebook-demo-post/notebook.html" class="no-external">
 <div class="listing-date">
 Nov 14, 2022
 </div>
@@ -304,19 +342,19 @@ Mat Miller
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="news,welcome" data-listing-date-sort="1668124800000" data-listing-file-modified-sort="1704648251605" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="3" data-categories="news,welcome" data-listing-date-sort="1668124800000" data-listing-file-modified-sort="1716688726325" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="11">
 <div class="thumbnail">
-<p><a href="./posts/welcome/index.html"> <img src="./posts/welcome/thumbnail.jpg" class="thumbnail-image"> </a></p>
+<p><a href="./posts/welcome/index.html" class="no-external"></a></p><a href="./posts/welcome/index.html" class="no-external">
+<p><img src="./posts/welcome/thumbnail.jpg" class="thumbnail-image"></p>
+</a><p><a href="./posts/welcome/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/welcome/index.html">
 <h3 class="no-anchor listing-title">
-Welcome To My Blog
+<a href="./posts/welcome/index.html" class="no-external">Welcome To My Blog</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/welcome/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
 news
@@ -325,14 +363,12 @@ news
 welcome
 </div>
 </div>
-<a href="./posts/welcome/index.html">
 <div class="listing-description">
-This is the first post in a Quarto blog. Welcome!
+<a href="./posts/welcome/index.html" class="no-external">This is the first post in a Quarto blog. Welcome!</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/welcome/index.html">
+<a href="./posts/welcome/index.html" class="no-external">
 <div class="listing-date">
 Nov 11, 2022
 </div>
@@ -426,10 +462,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/blog\.matdmiller\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -439,8 +492,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -452,7 +514,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -496,6 +681,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -521,6 +707,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -581,6 +793,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
