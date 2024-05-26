@@ -12,8 +12,14 @@ website:
   twitter-card: true
   google-analytics: "G-JPDLB55959"
   navbar:
+    left:
+      - href: https://matdmiller.com
+        text: Home
+      - href: index.qmd
+        text: Blog
+      - href: about.qmd
+        text: About
     right:
-      - about.qmd
       - icon: github
         href: https://github.com/matdmiller
       - icon: twitter
@@ -22,8 +28,10 @@ website:
         href: index.xml
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme:
+      light: lux
+      dark: lux
+#    css: styles.css
 
 execute:
   freeze: auto
