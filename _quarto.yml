@@ -28,10 +28,11 @@ website:
         href: index.xml
 format:
   html:
-    theme: cosmo
-      # light: lux
-      # dark: lux
-    # css: styles.css
+    # theme: cosmo
+    theme: 
+      light: lux
+      dark: lux
+    css: styles.css
 
 execute:
   freeze: auto

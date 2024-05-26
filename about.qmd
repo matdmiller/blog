@@ -16,4 +16,10 @@ about:
 
 ---
 
-Hi, my name is Mat Miller. I work on technology in the engineering and construction sector in the North America. My degree is in engineering and I am a self-taught coder. The purpose of this blog is to document my journey learning AI through the [fast.ai](https://fast.ai) course and to discuss other technology projects I find interesting.
+Welcome! I'm Mat Miller, a Manager and Data Engineering Tech Lead in the Engineering and Construction industry. I earned my engineering degree from Purdue University in 2009 and began my career working on large energy and industrial projects. I've always been passionate about technology, so I shifted my focus to building technology solutions to make projects more efficient and deliver better outcomes.
+
+With experience spanning both business operations and technology, I am able to effectively bridge the gap between both worlds. This allows me to anticipate potential problems, catch missed requirements early, and avoid miscommunication between business operations and the development team. The result is delivering technology solutions more rapidly with higher quality that better address the business needs.
+
+After recognizing the transformative potential of AI in 2016, I started focusing on the field and enrolled in the fast.ai course. I have since completed several AI projects and participated in Kaggle competitions. With a strong foundation in AI, I am eager to help develop solutions that address business needs, leveraging recent technological advancements, while ensuring they remain realistic based on the current state of the technology.
+
+Let me know if you'd like to discuss how my skills could benefit your projects and initiatives.
