@@ -1,5 +1,5 @@
 ---
-title: "blog"
+title: "Blog"
 listing:
   contents: posts
   sort: "date desc"
@@ -9,7 +9,7 @@ listing:
   filter-ui: false
   feed: true
 page-layout: full
-title-block-banner: true
+# title-block-banner: true
 ---
 
 
