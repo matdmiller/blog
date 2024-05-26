@@ -10,6 +10,7 @@ website:
   site-url: https://blog.matdmiller.com
   open-graph: true
   twitter-card: true
+  google-analytics: "G-JPDLB55959"
   navbar:
     right:
       - about.qmd
