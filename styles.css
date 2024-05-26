@@ -1,1 +1,6 @@
 /* css styles */
+/* Custom styles for Google Colab button */
+a[href*="colab.research.google.com"] img {
+    background: none; /* Ensures no background is applied to the image */
+    border: none; /* Removes any border that might be applied */
+}
