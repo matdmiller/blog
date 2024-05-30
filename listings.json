@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2024-02-15_custom_cuda_kernel_intro_and_benchmarks/notebook.html",
       "/posts/2023-06-10_transformers/notebook.html",
       "/posts/2022-12-13_context_managers_1/notebook.html",
       "/posts/jupyter-notebook-demo-post/notebook.html",
