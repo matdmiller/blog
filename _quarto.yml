@@ -29,10 +29,11 @@ website:
 format:
   html:
     # theme: cosmo
-    theme: 
-      light: lux
-      dark: lux
-    css: styles.css
+    theme: lux
+    # theme: 
+    #   light: lux
+    #   dark: lux
+    # css: styles.css
 
 execute:
   freeze: auto
