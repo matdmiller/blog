@@ -1,3 +1,5 @@
+Install Quarto: https://quarto.org/docs/get-started/ or https://anaconda.org/conda-forge/quarto
+
 Quarto publish command:
 quarto publish gh-pages --no-browser
 
