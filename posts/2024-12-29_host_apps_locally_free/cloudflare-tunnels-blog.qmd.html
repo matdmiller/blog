@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>cloudflare-tunnels-blog.qmd – Mat's Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-4968d28af72d4e5a34172c9bc5ef961b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-JPDLB55959"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-JPDLB55959', { 'anonymize_ip': true});
+</script>
+
+
+<meta property="og:title" content="Mat’s Blog">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="Mat's Blog">
+<meta name="twitter:title" content="Mat’s Blog">
+<meta name="twitter:description" content="">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Mat’s Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://matdmiller.com"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/matdmiller"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/matdmiller"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block"></header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="self-hosting-your-applications-for-free-a-guide-to-cloudflare-tunnels" class="level1">
+<h1>Self-Hosting Your Applications for Free: A Guide to Cloudflare Tunnels</h1>
+<p>In this post, we’ll explore how to host applications for free on your local network while making them securely accessible from anywhere using Cloudflare Tunnels. I’ve been running various applications this way for over a year, and it’s been a major upgrade in how I run services on my network. The ability to host applications locally while accessing them through any web browser has opened up exciting possibilities for running services without ongoing cloud costs.</p>
+<section id="what-you-can-build" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-can-build">What You Can Build</h2>
+<p>Before diving into the technical details, let’s look at some real examples of what you can run. I’m currently hosting:</p>
+<ul>
+<li>Jupyter notebooks for AI development, running on my GPU AI workstation</li>
+<li>Open WebUI - a free, open-source AI chat interface that can use both locally-running models via Ollama and OpenAI’s models through their API plus any other models that support the OpenAI API format</li>
+<li>Access to my router’s web configuration and network management</li>
+<li>Application and network monitoring through Uptime Kuma</li>
+<li>Direct access to my Synology NAS and its applications such as Surveillance Station and File Hosting</li>
+<li>PiKVM for remote hardware management of my AI workstation</li>
+<li>A local TV streaming service using a HD HomeRun tuner that I built using Fast HTML and FFmpeg</li>
+<li>Various development and testing environments</li>
+</ul>
+<p>All of these applications run on my local hardware but are accessible through any web browser, needing only an internet connection, without the need to install a VPN.</p>
+</section>
+<section id="key-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="key-benefits">Key Benefits</h2>
+<p>Here’s why this approach is valuable:</p>
+<ol type="1">
+<li><p><strong>Cost Efficiency</strong>: Running applications locally can be dramatically cheaper than cloud hosting. My NAS has over 30TB of storage - hosting this in the cloud would cost hundreds monthly.</p></li>
+<li><p><strong>Hardware Utilization</strong>: Use your existing hardware, including GPUs for AI workloads, without paying cloud compute costs.</p></li>
+<li><p><strong>Privacy Control</strong>: All data remains on your local network, with Cloudflare only acting as a secure gateway.</p></li>
+<li><p><strong>Simplified Access</strong>: No VPN needed - just open a browser and log in. This is especially useful when using computers where you can’t install a VPN client.</p></li>
+<li><p><strong>Certificate Management</strong>: Cloudflare handles all SSL certificates automatically - no more managing or renewing certificates manually.</p></li>
+<li><p><strong>Zero Port Forwarding</strong>: No need to expose ports on your router or manage dynamic DNS.</p></li>
+</ol>
+</section>
+<section id="how-cloudflare-tunnels-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-cloudflare-tunnels-work">How Cloudflare Tunnels Work</h2>
+<p>A Cloudflare Tunnel creates a secure connection between your local network and Cloudflare’s edge network through these components:</p>
+<ol type="1">
+<li>A lightweight daemon runs locally, establishing an outbound connection to Cloudflare</li>
+<li>Traffic is routed through Cloudflare’s global network to your local services</li>
+<li>All traffic is encrypted end-to-end</li>
+<li>Authentication and access controls are managed at the edge</li>
+</ol>
+<p>The architecture looks like this:</p>
+<pre><code>Cloudflare Tunnel Architecture:
+Browser -&gt; Cloudflare Edge -&gt; Encrypted Tunnel -&gt; Local Daemon -&gt; Your Services</code></pre>
+<p>This design eliminates the need for inbound firewall rules while providing enterprise-grade security features.</p>
+</section>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<p>Let’s walk through setting up your first Cloudflare Tunnel. You’ll need:</p>
+<ol type="1">
+<li>A domain name (can be registered through Cloudflare or elsewhere)</li>
+<li>A Cloudflare account</li>
+<li>Docker installed on your local machine</li>
+<li>An application you want to make accessible</li>
+</ol>
+<section id="initial-setup" class="level3">
+<h3 class="anchored" data-anchor-id="initial-setup">Initial Setup</h3>
+<p>First, register your domain with Cloudflare or point your existing domain’s nameservers to Cloudflare. While propagation can technically take up to 24 hours, it usually completes within minutes.</p>
+<p>For the smoothest experience, I recommend: - Setting up Docker before starting (Synology NAS comes with it pre-installed) - Installing Portainer for easy Docker management - Having your applications ready to expose - <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Follow along with the Cloudflare Zero Trust setup guide</a></p>
+</section>
+<section id="running-the-tunnel" class="level3">
+<h3 class="anchored" data-anchor-id="running-the-tunnel">Running the Tunnel</h3>
+<p>The easiest way to run the tunnel is through Docker. Here’s a basic command:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="dt">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--name</span> cloudflared <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--restart</span> unless-stopped <span class="dt">\</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  cloudflare/cloudflared:latest <span class="dt">\</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  tunnel <span class="at">--no-autoupdate</span> run <span class="at">--token</span> YOUR_TUNNEL_TOKEN</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>--restart unless-stopped</code> flag ensures the tunnel restarts automatically after system reboots. You should copy and paste the docker command from your Cloudflare Zero Trust dashboard which will have your token already included. Before running the command, you should edit it to include the extra arguments specified above.</p>
+</section>
+<section id="adding-access-rules-to-secure-your-applications" class="level3">
+<h3 class="anchored" data-anchor-id="adding-access-rules-to-secure-your-applications">Adding Access Rules to Secure Your Applications</h3>
+<p>The first thing you’ll want to do after creating the tunnel is to set up Access Rules. This is where you’ll define who can access your applications. This is an important step to keeping your applications and local network secure.</p>
+<p>Set up a default access group and wildcard subdomain application definition to ensure all new applications are secure by default. 1. Navigate to Access -&gt; Access Groups 2. Click on the “Add a Group” button 3. Enter a name for your access group (ex: “Default Access Group”) 4. Check the “Set as default group” checkbox 5. Under “Define group criteria” -&gt; “Include” -&gt; “Selector” select “Emails” and add the list of email addresses you want to have access to your applications separated by commas. Only include email addresses you trust and ones you’re sure you want to have access to your applications. 6. Click “Add require” at the bottom of the section. 7. Under “Require” -&gt; “Selector” select “Country” and add the country you want to allow access from. This is a great extra security measure to further lock down access to your applications. You can always change this later. 8. Click “Add exclude” at the bottom of the section. 9. Under “Exclude” -&gt; “Selector” select “Country” and add the country you want to block access from. I have added Russia, China, and North Korea to my exclude list because state sponsored hacking from these countries is more common. 10. Add any additional rules you want to further secure your applications. 11. Finally, click “Save” at the bottom of the page.</p>
+</section>
+<section id="adding-a-master-wildcard-subdomain-to-apply-security-by-default-to-any-new-applications" class="level3">
+<h3 class="anchored" data-anchor-id="adding-a-master-wildcard-subdomain-to-apply-security-by-default-to-any-new-applications">Adding A Master Wildcard Subdomain to apply security by default to any new applications</h3>
+<ol type="1">
+<li>Navigate to Access -&gt; Applications</li>
+<li>Click on the “Add an application” button</li>
+<li>Select “Self-hosted”</li>
+<li>For “Application name” enter a name for your application (ex: “Master Wildcard”)</li>
+<li>Under “Session Duration” select an appropriate duration for your session which is how long until the user will need to re-authenticate. If you plan on mostly using trusted devices you can set this to a longer duration but if you plan on using it on untrusted devices regularly you should set this to a shorter duration.</li>
+<li>For “Subdomain” enter a wildcard <code>*</code></li>
+<li>For “Domain” select your domain name (ex: mydomain.com)</li>
+<li>Under “Identity providers” select all of the identity providers you want to use to authenticate users. By default “One-time PIN” is selected which is Cloudflare’s magic link authentication. I recommend adding Google as a provider as well if you typically use Google accounts to access your applications.</li>
+<li>Fill out any additional settings you want to apply to your application and the click “Next” at the bottom of the page.</li>
+<li>Give your policy a name in the “Policy name” field.</li>
+<li>Ensure that the group you created earlier is selected in the “Access group” field.</li>
+<li>Add any additional rules you want to apply to your application and then click “Next” at the bottom of the page.</li>
+<li>Select “HTTP only” under “Cookie settings” and add any additional settings you want to apply to your application and then click “Add application” at the bottom of the page to finish setting up your master wildcard subdomain.</li>
+</ol>
+</section>
+<section id="adding-your-first-application" class="level3">
+<h3 class="anchored" data-anchor-id="adding-your-first-application">Adding Your First Application</h3>
+<p>Let’s say you want to make a web application running on port 8080 accessible. In the Cloudflare Zero Trust dashboard:</p>
+<ol type="1">
+<li>Navigate to Networks -&gt; Tunnels</li>
+<li>Click on the tunnel you want to edit and then click on the “Edit” button</li>
+<li>Click on the “Public Hostname” tab</li>
+<li>Click on the “Add a public hostname” button</li>
+<li>Enter your subdomain and select your domain (e.g., app.yourdomain.com)</li>
+<li>Set the type to HTTP(S) and the URL to {your service ip address - ex: 192.168.1.100}:{your service port - ex: 8080} 6b. If your service is running HTTPS, click “Additional application settings” -&gt; “TLS” -&gt; and turn on “No TLS verify” if you’re running a self-signed certificate</li>
+<li>Click on the “Save hostname” button</li>
+<li>If you want to set up custom security settings for this application you can follow the steps above, but substitute the master wildcard subdomain for this application’s subdomain and whatever other settings you want to apply to this application.</li>
+</ol>
+</section>
+</section>
+<section id="recommended-security-measures" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-security-measures">Recommended Security Measures</h2>
+<p>While I’m not a security expert, here are some practices that have worked well for me:</p>
+<ol type="1">
+<li><p><strong>Email Authentication</strong>: Create access groups and specify exactly which email addresses can access each application. This is a great additional layer of security to ensure that only trusted users have access to your applications.</p></li>
+<li><p><strong>Geographic Restrictions</strong>: Limit access to only the countries you need. Unless you have a specific reason, exclude countries known for hosting malicious traffic.</p></li>
+<li><p><strong>Network Segmentation</strong>: If possible, run your Cloudflare tunnel and exposed services on a separate VLAN. This provides an additional layer of protection for your main network.</p></li>
+<li><p><strong>Default Security</strong>: Set up a wildcard rule (*.yourdomain.com) with strict access controls as your default. This ensures new services are secure by default.</p></li>
+<li><p><strong>Two-Factor Authentication</strong>: Enable 2FA on your Cloudflare account - this is crucial since it controls access to all your services and your internal network.</p></li>
+</ol>
+<p>These recommendations help create defense in depth without making the system overly complicated to manage. Each person should evaluate their own security needs and implement controls accordingly.</p>
+</section>
+<section id="performance-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="performance-considerations">Performance Considerations</h2>
+<p>In my testing with a 5Gbps Google Fiber connection, I’ve seen:</p>
+<ul>
+<li>Port Forwarding: ~2.5-3 Gbps</li>
+<li>Cloudflare Tunnel: 500 Mbps download, 600-800 Mbps upload</li>
+</ul>
+<p>While this is significantly slower than port forwarding, it’s more than adequate for most web applications and development work. The free tier has been more than sufficient for my personal use, though you should be mindful of bandwidth consumption, especially with media streaming. Don’t abuse the free bandwidth by hosting large media files or streaming services using free Cloudflare Tunnels.</p>
+<p>For context, most home internet connections are well below these speeds, so the tunnel performance won’t be your bottleneck in most cases.</p>
+</section>
+<section id="real-world-example-ai-development-environment" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-example-ai-development-environment">Real-World Example: AI Development Environment</h2>
+<p>Let’s look at how I’ve set up my AI development environment:</p>
+<ol type="1">
+<li>Jupyter notebook server running on my GPU workstation</li>
+<li>Cloudflare Tunnel exposing it at jupyter.mydomain.com</li>
+<li>Email authentication only allowing access from my email address</li>
+<li>Geographic restriction to my home country</li>
+<li>HTTPS automatically handled by Cloudflare</li>
+</ol>
+<p>This gives me secure access to GPU computing resources from anywhere, without the cost or complexity of cloud services. It’s kind of like having my own private Google Colab instance without any of the limitations.</p>
+</section>
+<section id="docker-and-data-management" class="level2">
+<h2 class="anchored" data-anchor-id="docker-and-data-management">Docker and Data Management</h2>
+<p>Most of my applications run in Docker containers, with volumes mapped to specific paths on my NAS. This approach: - Keeps application data separate from containers - Makes updates and container recreation simple - Ensures data persistence across container updates - Simplifies backup procedures</p>
+<p>When setting up new applications, always plan your data storage strategy first. A common mistake is storing important data inside containers, which can be lost when containers are removed or updated.</p>
+</section>
+<section id="looking-forward" class="level2">
+<h2 class="anchored" data-anchor-id="looking-forward">Looking Forward</h2>
+<p>The ability to easily host applications on your own hardware creates powerful opportunities for running new AI-based applications locally, developing custom services, and experimenting with new technologies without worrying about cloud costs. In addition, this skillset you build by setting up your own Cloudflare Tunnels is increasingly valuable as businesses look to optimize their infrastructure costs by hosting their own applications locally using Cloudflare Tunnels.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Cloudflare Tunnels provides an excellent way to host personal projects and applications without the complexity of traditional networking setups or the ongoing costs of cloud services while providing enterprise-grade security features. While this guide focuses on personal projects, the same principles and technologies scale directly to business environments, from small startups to large enterprises. The skills you develop hosting your own applications this way are directly applicable to professional environments.</p>
+<p>I particularly appreciate how this setup lets me focus on building and running applications rather than managing infrastructure. While there’s always more to learn and improve, this approach has enabled me to build and experiment without worrying about complex networking or excessive cloud costs.</p>
+<p>Remember to evaluate your own security requirements and risk tolerance when implementing any solution. The configurations I’ve described work well for my needs, but your requirements may differ.</p>
+<p>If you’re interested in learning more, I highly recommend checking out the <a href="https://youtu.be/eojWaJQvqiw">Lawrence Systems video on Cloudflare Tunnels setup</a>, which provides additional perspectives and implementation details. You can also check out the <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Cloudflare Tunnels documentation</a> for more information.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/blog\.matdmiller\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
