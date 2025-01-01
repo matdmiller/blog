@@ -20,7 +20,7 @@ In this post, we'll explore how to host applications for free on your local netw
 Before diving into the technical details, let's look at some real examples of what you can run. I'm currently hosting:
 
 - Jupyter notebooks for AI development, running on my GPU AI workstation - it's like a private version of Google Colab
-- Open WebUI - a free, open-source AI chat interface that can use both locally-running models via Ollama and OpenAI's models through their API plus any other models that support the OpenAI API format - it's like a private version of ChatGPT
+- [Open WebUI](https://github.com/open-webui/open-webui) - a free, open-source AI chat interface that can use both locally-running models via Ollama and OpenAI's models through their API plus any other models that support the OpenAI API format - it's like a private version of ChatGPT
 - Access to my router's web configuration and network management
 - Application and network monitoring through Uptime Kuma
 - Direct access to my Synology NAS and its applications such as Surveillance Station and File Hosting
