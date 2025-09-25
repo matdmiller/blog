@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2025-09-24_til_simple_cloudflare_tunnels/index.html",
       "/posts/2024-12-29_host_apps_locally_free/index.html",
       "/posts/2024-02-15_custom_cuda_kernel_intro_and_benchmarks/notebook.html",
       "/posts/2023-06-10_transformers/notebook.html",
