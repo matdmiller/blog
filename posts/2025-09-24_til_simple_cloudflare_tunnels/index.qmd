@@ -1,0 +1,97 @@
+---
+title: "TIL: Setup Cloudflare Tunnels In One Line of Code"
+author: "Mat Miller"
+date: "09/24/2025"
+categories: [til, cloudflare, apps, free hosting]
+image: cover.png
+card-style: summary
+format:
+  html:
+    number-sections: true
+    toc: true
+    code-fold: false
+    self-contained: true
+    code-overflow: wrap
+---
+
+# How to Run Cloudflare Tunnels in One Line of Code
+
+This quick guide shows how to set up Cloudflared tunnels in a single command in User Space. 
+This means you can run it without root permissions linux environment or Docker container including places like 
+[Solve-It](https://solveit.fast.ai), [Modal](https://modal.com), [Lambda Labs](https://lambda.ai), etc. 
+This gives you a secure way to access your web apps securely from anywhere using your own domain with no network configuration needed.
+
+## TL;DR
+Run this command if you already set up your tunnel token `TUNNEL_TOKEN` in your environment variables which is recommended.
+```bash
+curl -L -o cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x cloudflared && ./cloudflared tunnel run
+```
+Run this command if you don't have your tunnel token set up in your environment variables and need to include it in the command.
+```bash
+curl -L -o cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x cloudflared && ./cloudflared tunnel run --token 'YOUR_TOKEN_HERE'
+```
+
+## Prerequisites
+- A free Cloudflare account with a domain name registered with Cloudflare
+- A Cloudflare tunnel token from your Zero Trust dashboard
+- Access to a running linux environment with user permissions
+
+## Steps
+
+### Step 1: Download Cloudflared
+First, identify your system architecture and download the appropriate binary. You will most likely be running this on a x86_64 Linux architecture. 
+If you want to run on a different architecture, you can find the list of binary options [here](https://github.com/cloudflare/cloudflared/releases/latest/).
+
+```bash
+# Download cloudflared (Linux x86_64)
+curl -L -o cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+```
+### Step 2: Make it executable
+```bash
+# Make it executable (in Linux)
+chmod +x cloudflared
+```
+
+### Step 3: (If Required) Set Your Tunnel Token
+If you are running this in the cloud in services like Solve-It, Modal, Lambda Labs, etc. you should set your tunnel token environment variable
+in the service's settings for environment variable secrets. This provides a secure way to store your token without having to keep it in your code. 
+If you need to manually set the token, you can do so with the following command. 
+Replace `YOUR_TUNNEL_TOKEN` with your actual token from Cloudflare. 
+
+```bash
+export TUNNEL_TOKEN="YOUR_TUNNEL_TOKEN"
+```
+
+### Step 4: Run Cloudflared
+I suggest running the tunnel in the foreground in tmux if possible. You can start a tmux session by running `tmux` if it's installed on your system. 
+This allows you to view the logs and easily kill the process as needed and it stays running after you close your terminal. 
+If you don't have tmux installed, you can run the tunnel in the foreground by running the following command.
+
+```bash
+./cloudflared tunnel run
+```
+If you want to run the tunnel in the background, you can run the following command.
+```bash
+nohup ./cloudflared tunnel run > cloudflared.log 2>&1 &
+```
+
+That's it! Your tunnel should now be active and visible in your Cloudflare dashboard.
+
+## Configure Your Application
+
+Next you will need to configure your application in the Cloudflare dashboard. You will find this page under Zero Trust -> Networks -> Tunnels. 
+Select the tunnel you want to configure. You can only run one instance of a tunnel at a time so if you plan on running multiple instances of 
+the tunnel, you will need to create a separate tunnel with a separate token. You can however run multiple applications on the same tunnel. 
+
+![Add Route Button in Cloudflare Dashboard](add_route_button.png)
+![Add Route Page in Cloudflare Dashboard](add_route_page.png)
+
+
+
+## Notes
+- You should set up security for your tunnel and applications. You can do this under the Zero Trust -> Access -> Applications page. You can 
+fine more information in my [previous post](https://blog.matmiller.com/posts/2024-12-29_host_apps_locally_free/). This post contains a much more detailed 
+guide on how to set up security and other settings for your tunnel and applications. It also provides many ideas for applications you can run through your tunnel.
+- The advantage of running a cloudflared tunnel like this is that you don't need to install it, you simply download and run a single binary file and it just works.
+- Check out the [Cloudflare Tunnels documentation](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/) for more information.
+- To run it in the background in a long running Modal function, you can just wrap the one line command in `subprocess.Popen`.
